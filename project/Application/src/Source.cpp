@@ -6,7 +6,8 @@ using namespace std;
 namespace GameGenie {
 	void print_test() {
 		cout << "TEST Application" << endl;
-		cout << Engine::Add(10, 11);
+		Engine engine;
+		cout << engine.Add(10, 11);
 	}
 }
 
