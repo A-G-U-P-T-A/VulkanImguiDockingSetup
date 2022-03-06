@@ -5,3 +5,5 @@ obj/
 *.vcxproj
 *.vcxproj.filters
 project/**/*.vcxproj
+project/**/*.vcxproj.user
+project/**/*.vcxproj.filters
