@@ -1,8 +1,12 @@
 #include <iostream>
+#include "../../Engine/src/Engine.h"
+
+
 using namespace std;
 namespace GameGenie {
 	void print_test() {
-		cout << "TEST Application";
+		cout << "TEST Application" << endl;
+		cout << Engine::Add(10, 11);
 	}
 }
 
