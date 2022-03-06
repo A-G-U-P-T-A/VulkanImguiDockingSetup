@@ -21,7 +21,7 @@ project "Application"
       optimize "On"
 
 project "Engine"
-   kind "ConsoleApp"
+   kind "SharedLib"
    language "C++"
    targetdir "bin/%{cfg.buildcfg}"
    location "project/Engine"
