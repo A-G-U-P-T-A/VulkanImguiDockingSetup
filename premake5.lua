@@ -2,6 +2,7 @@
 workspace "GameGenie"
    configurations { "Debug", "Release" }
    platforms { "Win64" }
+   startproject "Application"
 
 project "Application"
    kind "ConsoleApp"
@@ -34,3 +35,4 @@ project "Engine"
    filter "configurations:Release"
       defines { "NDEBUG" }
       optimize "On"
+
