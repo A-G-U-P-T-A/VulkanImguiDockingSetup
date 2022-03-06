@@ -1,5 +1,5 @@
 #include <iostream>
 using namespace std;
 void main() {
-		std::cout<<"TEST";
+	std::cout << "TEST";
 }

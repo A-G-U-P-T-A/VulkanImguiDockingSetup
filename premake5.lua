@@ -7,6 +7,7 @@ project "Application"
    kind "ConsoleApp"
    language "C++"
    targetdir "bin/%{cfg.buildcfg}"
+   location "project/Application"
 
    files { "**.h", "**.cpp" }
 
@@ -22,6 +23,7 @@ project "Engine"
    kind "ConsoleApp"
    language "C++"
    targetdir "bin/%{cfg.buildcfg}"
+   location "project/Engine"
 
    files { "**.h", "**.cpp" }
 
