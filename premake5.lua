@@ -1,4 +1,7 @@
 -- premake5.lua
+-- add system variable 
+-- Set the variable name as "DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1"
+-- Set the variable value as 1
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 workspace "GameGenie"
@@ -16,7 +19,10 @@ project "Application"
    targetdir "%{wks.location}/release/%{prj.name}/app"
    location "project/Application"
    links { 
-       "Engine"
+        "Engine",
+        "d3d12.lib",
+        "dxgi.lib",
+        "d3dcompiler.lib"
    }
    includedirs { 
        "project/Engine/src/**" 
