@@ -18,19 +18,18 @@ project "Application"
    language "C++"
    targetdir "%{wks.location}/release/%{prj.name}/app"
    location "project/Application"
+
    links { 
         "Engine",
-        "d3d12.lib",
-        "dxgi.lib",
-        "d3dcompiler.lib"
+        "$(VULKAN_SDK)/lib/vulkan-1.lib"
    }
    includedirs { 
-       "project/Engine/src/**" 
+       "%{wks.location}/project/Engine/src/**" ,
+       "$(VULKAN_SDK)/include"
    }
-
    files { 
-       "project/%{prj.name}/src/**.h",
-       "project/%{prj.name}/src/**.cpp" 
+       "%{wks.location}/project/%{prj.name}/src/**.h",
+       "%{wks.location}/project/%{prj.name}/src/**.cpp" 
    }
 
    filter "configurations:Debug"
