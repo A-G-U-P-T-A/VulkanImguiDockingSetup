@@ -2,7 +2,7 @@
 -- add system variable 
 -- Set the variable name as "DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1"
 -- Set the variable value as 1
-outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+-- outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 workspace "GameGenie"
    configurations { 
@@ -25,8 +25,11 @@ project "Application"
    }
    includedirs { 
        "%{wks.location}/project/Engine/src/**" ,
-       "$(VULKAN_SDK)/include"
+       "$(VULKAN_SDK)/include",
+       "%{wks.location}/libs/glfw/include/"
    }
+   links { "GLFW" }
+
    files { 
        "%{wks.location}/project/%{prj.name}/src/**.h",
        "%{wks.location}/project/%{prj.name}/src/**.cpp" 
@@ -63,3 +66,4 @@ project "Engine"
       defines { "NDEBUG" }
       optimize "On"
 
+include "libs/glfw.lua"
