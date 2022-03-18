@@ -13,6 +13,7 @@ workspace "GameGenie"
    }
    startproject "Application"
 
+
 project "Application"
    kind "ConsoleApp"
    language "C++"
