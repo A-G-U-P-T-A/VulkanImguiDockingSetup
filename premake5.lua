@@ -21,14 +21,15 @@ project "Application"
 
    links { 
         "Engine",
-        "$(VULKAN_SDK)/lib/vulkan-1.lib"
+        "$(VULKAN_SDK)/lib/vulkan-1.lib",
+        "GLFW"
    }
    includedirs { 
        "%{wks.location}/project/Engine/src/**" ,
        "$(VULKAN_SDK)/include",
        "%{wks.location}/libs/glfw/include/"
    }
-   links { "GLFW" }
+   links {  }
 
    files { 
        "%{wks.location}/project/%{prj.name}/src/**.h",
@@ -55,7 +56,11 @@ project "Engine"
    postbuildcommands {
        "{COPYFILE} %{wks.location}/release/%{prj.name}/dll/Engine.dll %{wks.location}/release/Application/app/Engine.dll"
    }
-
+   includedirs { 
+       "$(VULKAN_SDK)/include",
+       "%{wks.location}/libs/glfw/include/"
+   }
+   links { "GLFW" }
    files { "**.h", "**.cpp" }
 
    filter "configurations:Debug"
