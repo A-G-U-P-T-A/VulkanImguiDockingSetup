@@ -18,9 +18,9 @@ project "Engine"
     language "C++"
     targetdir "%{wks.location}/release/%{prj.name}/dll"
     location "project/Engine"
-    postbuildcommands {
-       "{COPYFILE} %{wks.location}/release/%{prj.name}/dll/Engine.dll %{wks.location}/release/Application/app/Engine.dll"
-    }
+    --postbuildcommands {
+    --   "{COPYFILE} %{wks.location}/release/%{prj.name}/dll/Engine.dll %{wks.location}/release/Application/app/Engine.dll"
+    --}
     --includedirs { 
      --  "$(VULKAN_SDK)/include", "libs/glfw/include/", "libs/glm/"
     --}
