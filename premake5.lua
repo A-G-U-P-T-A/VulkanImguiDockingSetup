@@ -16,8 +16,9 @@ workspace "GameGenie"
 project "Engine"
     kind "SharedLib"
     language "C++"
-    targetdir "%{wks.location}/release/%{prj.name}/dll"
-    location "project/Engine"
+    --targetdir "%{wks.location}/release/%{prj.name}/dll"
+    targetdir "bin/%{cfg.buildcfg}"
+    objdir "bin/obj/%{cfg.buildcfg}"
     --postbuildcommands {
     --   "{COPYFILE} %{wks.location}/release/%{prj.name}/dll/Engine.dll %{wks.location}/release/Application/app/Engine.dll"
     --}
@@ -41,8 +42,7 @@ project "Application"
     cppdialect "C++17"
 	architecture "x86_64"
     targetdir "bin/%{cfg.buildcfg}"
-    objdir "obj/%{cfg.buildcfg}"
-    --location ""
+    objdir "bin/obj/%{cfg.buildcfg}"
     
 
     includedirs { 
