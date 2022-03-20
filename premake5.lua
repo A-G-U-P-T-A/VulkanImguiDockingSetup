@@ -29,7 +29,6 @@ project "Application"
        "$(VULKAN_SDK)/include",
        "%{wks.location}/libs/glfw/include/"
    }
-   links {  }
 
    files { 
        "%{wks.location}/project/%{prj.name}/src/**.h",
