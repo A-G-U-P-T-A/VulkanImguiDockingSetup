@@ -1,73 +1,64 @@
--- premake5.lua
--- add system variable 
--- Set the variable name as "DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1"
--- Set the variable value as 1
--- outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-
 workspace "GameGenie"
-   configurations { 
-       "Debug", "Release" 
-   }
-   platforms { 
-       "Win64" 
-   }
-   startproject "Application"
+    configurations { "Debug", "Release" }
+    startproject "Application"
 
-project "Application"
-   kind "ConsoleApp"
-   language "C++"
-   targetdir "%{wks.location}/release/%{prj.name}/app"
-   location "project/Application"
+    flags { "MultiProcessorCompile" }
 
-   links { 
-        "Engine",
-        "$(VULKAN_SDK)/lib/vulkan-1.lib",
-        "GLFW"
-   }
-   includedirs { 
-       "%{wks.location}/project/Engine/src/**" ,
-       "$(VULKAN_SDK)/include",
-       "%{wks.location}/libs/glfw/include/"
-   }
+    filter "configurations:Debug"
+        defines { "DEBUG", "DEBUG_SHADER" }
+        symbols "On"
 
-   files { 
-       "%{wks.location}/project/%{prj.name}/src/**.h",
-       "%{wks.location}/project/%{prj.name}/src/**.cpp" 
-   }
-
-   filter "configurations:Debug"
-      defines { 
-          "DEBUG" 
-      }
-      symbols "On"
-
-   filter "configurations:Release"
-      defines { 
-          "NDEBUG" 
-      }
-      optimize "On"
+    filter "configurations:Release"
+        defines { "RELEASE" }
+        optimize "Speed"
+        flags { "LinkTimeOptimization" }
 
 project "Engine"
-   kind "SharedLib"
-   language "C++"
-   targetdir "%{wks.location}/release/%{prj.name}/dll"
-   location "project/Engine"
-   postbuildcommands {
+    kind "SharedLib"
+    language "C++"
+    targetdir "%{wks.location}/release/%{prj.name}/dll"
+    location "project/Engine"
+    postbuildcommands {
        "{COPYFILE} %{wks.location}/release/%{prj.name}/dll/Engine.dll %{wks.location}/release/Application/app/Engine.dll"
-   }
-   includedirs { 
-       "$(VULKAN_SDK)/include",
-       "%{wks.location}/libs/glfw/include/"
-   }
-   links { "GLFW" }
-   files { "**.h", "**.cpp" }
+    }
+    --includedirs { 
+     --  "$(VULKAN_SDK)/include", "libs/glfw/include/", "libs/glm/"
+    --}
+    --links { "GLFW", "GLM" }
+    --files { "**.h", "**.cpp" }
 
-   filter "configurations:Debug"
-      defines { "DEBUG" }
-      symbols "On"
+    filter "system:linux"
+        links { "dl", "pthread" }
 
-   filter "configurations:Release"
-      defines { "NDEBUG" }
-      optimize "On"
+        defines { "_X11" }
+
+    filter "system:windows"
+        defines { "_WINDOWS" }
+
+project "Application"
+    kind "ConsoleApp"
+    language "C++"
+    cppdialect "C++17"
+	architecture "x86_64"
+    targetdir "bin/%{cfg.buildcfg}"
+    objdir "obj/%{cfg.buildcfg}"
+    --location ""
+    
+
+    includedirs { 
+       "$(VULKAN_SDK)/include", "include/",  "libs/glfw/include/", "libs/glm/"
+    }
+    links { "GLFW", "GLM", "$(VULKAN_SDK)/lib/vulkan-1.lib" }
+
+    files { "project/Application/**.h", "project/Application/**.cpp" }
+
+    filter "system:linux"
+        links { "dl", "pthread" }
+
+        defines { "_X11" }
+
+    filter "system:windows"
+        defines { "_WINDOWS" }
 
 include "libs/glfw.lua"
+include "libs/glm.lua"
