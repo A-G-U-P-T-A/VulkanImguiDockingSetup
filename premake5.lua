@@ -46,9 +46,9 @@ project "Application"
     
 
     includedirs { 
-       "$(VULKAN_SDK)/include", "include/",  "libs/glfw/include/", "libs/glm/"
+       "$(VULKAN_SDK)/include", "include/",  "libs/glfw/include/", "libs/glm/",  "libs/imgui/", "libs/imgui/examples",  "libs/imgui/backends"
     }
-    links { "GLFW", "GLM", "$(VULKAN_SDK)/lib/vulkan-1.lib" }
+    links { "GLFW", "GLM", "$(VULKAN_SDK)/lib/vulkan-1.lib", "ImGui" }
 
     files { "project/Application/**.h", "project/Application/**.cpp" }
 
@@ -62,3 +62,4 @@ project "Application"
 
 include "libs/glfw.lua"
 include "libs/glm.lua"
+include "libs/imgui.lua"
