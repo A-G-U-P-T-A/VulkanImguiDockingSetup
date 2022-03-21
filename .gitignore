@@ -9,3 +9,4 @@ project/**/*.vcxproj
 project/**/*.vcxproj.user
 project/**/*.vcxproj.filters
 release/
+imgui.ini
