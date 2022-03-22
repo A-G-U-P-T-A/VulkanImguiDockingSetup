@@ -357,6 +357,8 @@ static void glfw_error_callback(int error, const char* description)
 
 int main(int, char**)
 {
+    Engine engine;
+    engine.add(1, 2);
     // Setup GLFW window
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())

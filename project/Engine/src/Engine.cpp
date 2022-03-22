@@ -1,5 +1,10 @@
-#include "Engine.h"
+#define MAKE_DLL
 
-int add(int a, int b) {
+#include "Engine.h"
+#include <iostream>
+using namespace std;
+
+int Engine::add(int a, int b) {
+	cout << (a + b) << endl;
 	return a + b;
 }
