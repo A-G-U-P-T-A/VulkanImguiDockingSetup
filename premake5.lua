@@ -16,17 +16,17 @@ workspace "GameGenie"
 project "Engine"
     kind "SharedLib"
     language "C++"
-    --targetdir "%{wks.location}/release/%{prj.name}/dll"
+    cppdialect "C++17"
+	architecture "x86_64"
     targetdir "bin/%{cfg.buildcfg}"
     objdir "bin/obj/%{cfg.buildcfg}"
-    --postbuildcommands {
-    --   "{COPYFILE} %{wks.location}/release/%{prj.name}/dll/Engine.dll %{wks.location}/release/Application/app/Engine.dll"
-    --}
-    --includedirs { 
-     --  "$(VULKAN_SDK)/include", "libs/glfw/include/", "libs/glm/"
-    --}
-    --links { "GLFW", "GLM" }
-    --files { "**.h", "**.cpp" }
+    
+    includedirs { 
+       "$(VULKAN_SDK)/include", "include/",  "libs/glfw/include/", "libs/glm/",  "libs/imgui/", "libs/imgui/examples",  "libs/imgui/backends", "project/Engine/"
+    }
+    links { "GLFW", "GLM", "$(VULKAN_SDK)/lib/vulkan-1.lib", "ImGui" }
+
+    files { "project/Engine/**.h", "project/Engine/**.cpp" }
 
     filter "system:linux"
         links { "dl", "pthread" }
@@ -46,9 +46,9 @@ project "Application"
     
 
     includedirs { 
-       "$(VULKAN_SDK)/include", "include/",  "libs/glfw/include/", "libs/glm/",  "libs/imgui/", "libs/imgui/examples",  "libs/imgui/backends"
+       "$(VULKAN_SDK)/include", "include/",  "libs/glfw/include/", "libs/glm/",  "libs/imgui/", "libs/imgui/examples",  "libs/imgui/backends", "project/Engine"
     }
-    links { "GLFW", "GLM", "$(VULKAN_SDK)/lib/vulkan-1.lib", "ImGui" }
+    links { "GLFW", "GLM", "$(VULKAN_SDK)/lib/vulkan-1.lib", "ImGui", "Engine" }
 
     files { "project/Application/**.h", "project/Application/**.cpp" }
 
