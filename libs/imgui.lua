@@ -4,7 +4,7 @@ project "ImGui"
 	architecture "x86_64"
 
 	targetdir "../bin/%{cfg.buildcfg}"
-	objdir "../obj/%{cfg.buildcfg}"
+	objdir "../bin/obj/%{cfg.buildcfg}"
 	links {"$(VULKAN_SDK)/lib/vulkan-1.lib"}
 	includedirs { "imgui/", "imgui/examples/", "$(VULKAN_SDK)/include", "glfw/include/", "imgui/backend/" }
 
