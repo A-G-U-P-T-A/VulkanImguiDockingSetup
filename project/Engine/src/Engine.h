@@ -1,23 +1,14 @@
 #pragma once
-using namespace std;
-namespace GameGenie
-{
-    class Engine
-    {
+#ifdef MAKEDLL
+#  define EXPORT __declspec(dllexport)
+#else
+#  define EXPORT __declspec(dllimport)
+#endif
+
+class EXPORT Engine {
     public:
-        // Returns a + b 
-        __declspec(dllexport) double Add(double a, double b);
-
-        // Returns a - b 
-        __declspec(dllexport) double Subtract(double a, double b);
-
-        // Returns a * b 
-        __declspec(dllexport) double Multiply(double a, double b);
-
-        // Returns a / b 
-        // Throws DivideByZeroException if b is 0 
-        __declspec(dllexport) double Divide(double a, double b);
-    };
-}
-
-
+        int num1;
+        int num2;
+    public:
+        int add(int a, int b);
+};

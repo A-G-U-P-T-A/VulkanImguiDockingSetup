@@ -4,7 +4,7 @@ project "GLFW"
 	architecture "x86_64"
 
 	targetdir "../bin/%{cfg.buildcfg}"
-	objdir "../obj/%{cfg.buildcfg}"
+	objdir "../bin/obj/%{cfg.buildcfg}"
 	
 	includedirs { "glfw/include/" }
 
