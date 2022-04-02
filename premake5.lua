@@ -22,11 +22,26 @@ project "Engine"
     objdir "bin/obj/%{cfg.buildcfg}"
     
     includedirs { 
-       "$(VULKAN_SDK)/include", "include/",  "libs/glfw/include/", "libs/glm/",  "libs/imgui/", "libs/imgui/examples",  "libs/imgui/backends", "project/Engine/"
+        "$(VULKAN_SDK)/include",
+        "include/",
+        "libs/glfw/include/",
+        "libs/glm/",
+        "libs/imgui/",
+        "libs/imgui/examples", 
+        "libs/imgui/backends",
+        "project/Engine/"
     }
-    links { "GLFW", "GLM", "$(VULKAN_SDK)/lib/vulkan-1.lib", "ImGui" }
+    links { 
+        "GLFW",
+        "GLM", 
+        "$(VULKAN_SDK)/lib/vulkan-1.lib",
+        "ImGui" 
+    }
 
-    files { "project/Engine/**.h", "project/Engine/**.cpp" }
+    files { 
+        "project/Engine/**.h",
+        "project/Engine/**.cpp" 
+    }
 
     filter "system:linux"
         links { "dl", "pthread" }
@@ -46,9 +61,22 @@ project "Application"
     
 
     includedirs { 
-       "$(VULKAN_SDK)/include", "include/",  "libs/glfw/include/", "libs/glm/",  "libs/imgui/", "libs/imgui/examples",  "libs/imgui/backends", "project/Engine"
+        "$(VULKAN_SDK)/include", 
+        "include/",
+        "libs/glfw/include/",
+        "libs/glm/",
+        "libs/imgui/",
+        "libs/imgui/examples",
+        "libs/imgui/backends",
+        "project/Engine"
     }
-    links { "GLFW", "GLM", "$(VULKAN_SDK)/lib/vulkan-1.lib", "ImGui", "Engine" }
+    links { 
+        "GLFW",
+        "GLM",
+        "$(VULKAN_SDK)/lib/vulkan-1.lib",
+        "ImGui",
+        "Engine" 
+    }
 
     files { "project/Application/**.h", "project/Application/**.cpp" }
 
