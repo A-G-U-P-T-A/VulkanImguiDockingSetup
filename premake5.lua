@@ -28,8 +28,7 @@ project "Engine"
         "libs/glm/",
         "libs/imgui/",
         "libs/imgui/examples", 
-        "libs/imgui/backends",
-        "project/Engine/"
+        "libs/imgui/backends"
     }
     links { 
         "GLFW",
