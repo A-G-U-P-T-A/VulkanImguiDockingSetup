@@ -1,14 +1,8 @@
 #pragma once
-#ifdef MAKEDLL
-#  define EXPORT __declspec(dllexport)
-#else
-#  define EXPORT __declspec(dllimport)
-#endif
+#define DllImport __declspec( dllimport )
+#define DllExport __declspec( dllexport )
 
-class EXPORT Engine {
-    public:
-        int num1;
-        int num2;
-    public:
-        int add(int a, int b);
+class DllExport Engine {
+	public:
+		static int add(int a, int b);
 };

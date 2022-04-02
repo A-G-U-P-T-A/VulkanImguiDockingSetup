@@ -18,7 +18,8 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 #include <vulkan/vulkan.h>
-#include <../Engine/src/Engine.h>
+#include <Engine.h>
+#define MAKEDLL
 
 
 
@@ -355,11 +356,7 @@ static void glfw_error_callback(int error, const char* description)
     fprintf(stderr, "Glfw Error %d: %s\n", error, description);
 }
 
-int main(int, char**)
-{
-    Engine engine;
-    engine.add(1, 2);
-    // Setup GLFW window
+int imgui_tester_1() {
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
         return 1;
@@ -580,6 +577,18 @@ int main(int, char**)
 
     glfwDestroyWindow(window);
     glfwTerminate();
+    return 0;
+}
+
+int main(int, char**)
+{
+    DllImport Engine engine;
+    engine.add(1, 2);
+    //DllImport Engine::add(2, 4);
+    //engine.add(1, 2);
+    //engine.add(1, 2);
+    // Setup GLFW window
+    //imgui_tester_1();
 
     return 0;
 }

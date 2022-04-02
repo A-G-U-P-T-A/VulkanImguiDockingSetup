@@ -67,14 +67,14 @@ project "Application"
         "libs/imgui/",
         "libs/imgui/examples",
         "libs/imgui/backends",
-        "project/Engine"
+        "%{prj.location}/project/Engine/src/"
     }
     links { 
         "GLFW",
         "GLM",
         "$(VULKAN_SDK)/lib/vulkan-1.lib",
         "ImGui",
-        "Engine" 
+        "Engine"
     }
 
     files { "project/Application/**.h", "project/Application/**.cpp" }
