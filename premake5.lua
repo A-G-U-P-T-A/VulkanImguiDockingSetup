@@ -48,7 +48,7 @@ project "Engine"
         defines { "_X11" }
 
     filter "system:windows"
-        defines { "_WINDOWS" }
+        defines { "_WINDOWS", "_BUILD_DLL" }
 
 project "Application"
     kind "ConsoleApp"

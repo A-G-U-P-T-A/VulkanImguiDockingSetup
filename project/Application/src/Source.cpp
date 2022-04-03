@@ -19,7 +19,6 @@
 #include <GLFW/glfw3.h>
 #include <vulkan/vulkan.h>
 #include <Engine.h>
-#define MAKEDLL
 
 
 
@@ -582,13 +581,8 @@ int imgui_tester_1() {
 
 int main(int, char**)
 {
-    DllImport Engine engine;
+    Engine::Engine engine;
     engine.add(1, 2);
-    //DllImport Engine::add(2, 4);
-    //engine.add(1, 2);
-    //engine.add(1, 2);
-    // Setup GLFW window
-    //imgui_tester_1();
-
+    engine.test_func_10();
     return 0;
 }
